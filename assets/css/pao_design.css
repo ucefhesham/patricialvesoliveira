@@ -1013,4 +1013,54 @@ a {
     .teaching-card h3 {
         font-size: 20px;
     }
+
+    /* Footer - Stack vertically */
+    .footer-layout {
+        flex-direction: column !important;
+        text-align: center;
+        gap: 24px !important;
+    }
+
+    .footer-left,
+    .footer-center,
+    .footer-right {
+        width: 100%;
+    }
+}
+
+/* ==========================================
+   15. GLOBAL OVERFLOW PREVENTION
+   ========================================== */
+html,
+body {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+/* Footer stacking on tablet too */
+@media (max-width: 768px) {
+    .footer-layout {
+        flex-direction: column !important;
+        text-align: center;
+        gap: 20px !important;
+        padding: 32px 0 !important;
+    }
+
+    .footer-left,
+    .footer-center,
+    .footer-right {
+        width: 100%;
+    }
+
+    .footer-left {
+        order: 1;
+    }
+
+    .footer-center {
+        order: 2;
+    }
+
+    .footer-right {
+        order: 3;
+    }
 }

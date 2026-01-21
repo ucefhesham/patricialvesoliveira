@@ -4,7 +4,7 @@ layout: default
 
 <!-- Hero Section -->
 <div class="wrapper">
-  <div class="hero-section">
+  <div class="hero-section fade-up">
     <div class="hero-image">
       <img src="assets/images/{{site.title_image}}" alt="Patrícia Alves-Oliveira Headshot">
     </div>
@@ -49,7 +49,7 @@ layout: default
 
 <!-- Latest News Section -->
 <div class="wrapper" id="news">
-  <div class="section-header">
+  <div class="section-header fade-up">
     <div class="title-group">
       <h2>Latest News</h2>
       <p>Updates from the lab and research community</p>
@@ -57,7 +57,7 @@ layout: default
 
   </div>
 
-  <div class="news-bento">
+  <div class="news-bento fade-up">
     <!-- Gather All News Items -->
     {% assign news_flat = "" | split: "" %}
     {% for month in site.data.news %}
@@ -133,7 +133,7 @@ layout: default
     </div>
   </div>
 
-  <div class="pillars-grid">
+  <div class="pillars-grid fade-up">
     <!-- Students -->
     <div class="pillar-card">
       <div class="icon-box"><i class="fas fa-users"></i></div>
@@ -197,7 +197,7 @@ layout: default
       <h2>Projects</h2>
     </div>
   </div>
-  <div class="projects-section">
+  <div class="projects-section fade-up">
     <p>For details about the research projects in my lab, see <a target="_blank"
         style="color:var(--primary-purple); font-weight:bold;" href="https://www.robotdesign.studio">Robot Studio</a>.
     </p>
@@ -208,7 +208,7 @@ layout: default
 
 <!-- Press & Media -->
 <div class="wrapper">
-  <div class="press-banner">
+  <div class="press-banner fade-up">
     <div class="content">
       <h2>Press & Media</h2>
       <div class="press-list">

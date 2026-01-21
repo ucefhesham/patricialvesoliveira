@@ -3,7 +3,7 @@ layout: default
 ---
 
 <div class="wrapper">
-    <div class="page-header" style="padding: 60px 0 40px 0;">
+    <div class="page-header fade-up" style="padding: 60px 0 40px 0;">
         <h1 style="font-family: var(--font-serif); font-size: 48px; margin-bottom: 20px;">Teaching</h1>
         <p style="max-width: 600px; color: var(--text-gray); font-size: 18px; line-height: 1.6;">
             Exploring the intersection of robotics, design, and human interaction through comprehensive coursework and
@@ -14,7 +14,7 @@ layout: default
     <div class="teaching-list">
         {% for course in site.data.teaching %}
         {% capture cycle %}{% cycle 'odd', 'even' %}{% endcapture %}
-        <div class="teaching-card {% if cycle == 'even' %}reverse{% endif %}" id="{{ course.id }}">
+        <div class="teaching-card fade-up {% if cycle == 'even' %}reverse{% endif %}" id="{{ course.id }}">
             <div class="card-image">
                 <img src="{{ course.image | relative_url }}" alt="{{ course.title }}">
             </div>

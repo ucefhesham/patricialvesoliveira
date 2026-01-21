@@ -1,25 +1,31 @@
 <footer>
-	<div style="margin-top:5px;">
-		{% for link in site.data.links %}
-		<a href="{{ link.url }}" target="_blank" style="margin-right: 5px; display: inline-flex; align-items: center; justify-content: center; height: 14px; {% if link.img %} position: relative; top: 2px; {% endif %}">
-			{% if link.icon %}<i class="{{ link.icon }}" style="font-size:20px;"></i>{% endif %}
-			{% if link.img %}
-				<img width="20" height="20" src="assets/images/{{ link.img }}">
-			{% endif %}
-		</a>
-	{% endfor %}
-	</div>
-	<span style="font-size:10px;">Original website design by Sarah Chasins.</span>
-</footer>
+	<div class="wrapper">
+		<div class="footer-layout"
+			style="display: flex; justify-content: space-between; align-items: center; padding: 40px 0;">
 
-<style>
-	footer {
-		border-top: 1px solid #e8e8e8;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		padding:5px;
-	}
-</style>
+			<div class="footer-left">
+				<a href="{{ " /" | relative_url }}"
+					style="font-weight: bold; font-family: 'Times New Roman', serif; font-size: 18px; color: var(--primary-purple);">PAO.</a>
+				<div style="font-size: 12px; color: #999; margin-top: 5px;">&copy; 2026 Patrícia
+					Alves-Oliveira. All rights reserved.</div>
+			</div>
+
+			<!-- Unified Social Icons -->
+			<div class="social-links-unified footer-center">
+				{% for link in site.data.links %}
+				<a href="{{ link.url }}" target="_blank" aria-label="{{ link.title }}">
+					{% if link.icon %}<i class="{{ link.icon }}"></i>{% endif %}
+					{% if link.img %}<img src="assets/images/{{ link.img }}" width="18" height="18">{% endif %}
+				</a>
+				{% endfor %}
+			</div>
+
+			<div class="footer-right">
+				<a href="https://robotdesign.studio" target="_blank" style="font-size: 12px; color: #666;">Visit <strong
+						style="color: var(--text-dark);">Robot Studio</strong> <i class="fas fa-external-link-alt"
+						style="font-size:10px;"></i></a>
+			</div>
+
+		</div>
+	</div>
+</footer>

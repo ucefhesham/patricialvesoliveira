@@ -1,466 +1,250 @@
 ---
 layout: default
 ---
-<div class="footer-col-wrapper clearfix">
-	<div class="footer-col body-col-2" style="margin:0px;" id="picture">
-		<img src="assets/images/{{site.title_image}}" id="self_img" class="left padded"   style="margin:0px; margin-right:15px;"
-			alt="Patrícia Alves-Oliveira Headshot">
-	</div>
-	<div class="footer-col body-col-3"  style="margin:0px; font-size:14px;">
-		<div>
-			<span class="focus">
-				Assistant Professor
-			</span> of <a href="https://robotics.umich.edu/" target="_blank">Robotics</a> at the
-			<a href="https://umich.edu/" target="_blank">University of Michigan</a>
-		</div>
-		<div>
-			<span class="focus">Area</span>: Human-Robot Interaction &bull; Artificial Intelligence &bull; Design Research
-		</div>
-		<div>
-			<span class="focus">Focuses</span>: Health &bull; Education &bull; Arts
-		</div>
-		<div style="margin-bottom:2px;">
-			<span class="focus">Lab</span>: <a href="https://robotdesign.studio" target="_blank">Robot Studio</a>
-		</div>
-		<div style="margin-bottom:2px;">
-			<span class="focus">Affiliations</span>: 
-      {% for affiliation in site.data.index.affiliations %}
-      {{ affiliation | markdownify | replace: '<a ', '<a target="_blank" ' | remove: '<p>' | remove: '</p>' }}
-      {% unless forloop.last %}&bull; {% endunless %}
-      {% endfor %}
-			</a>
-		</div>
-		<div>
-		{% for link in site.data.links %}
-		<a href="{{ link.url }}" target="_blank" style="margin-right: 5px; display: inline-flex; align-items: center; justify-content: center; height: 14px; {% if link.img %} position: relative; top: 2px; {% endif %}">
-			{% if link.icon %}<i class="{{ link.icon }}" style="font-size:18px;"></i>{% endif %}
-			{% if link.img %}
-				<img width="18" height="18" src="assets/images/{{ link.img }}">
-			{% endif %}
-		</a>
-	{% endfor %}
+
+<!-- Hero Section -->
+<div class="wrapper">
+  <div class="hero-section">
+    <div class="hero-image">
+      <img src="assets/images/{{site.title_image}}" alt="Patrícia Alves-Oliveira Headshot">
+    </div>
+    <div class="hero-content">
+      <h1>Patrícia <span class="highlight">Alves-Oliveira</span></h1>
+      <div class="role-title">
+        Assistant Professor of <strong>Robotics</strong> at the University of Michigan
+      </div>
+
+      <div class="tags">
+        <span class="tag">Human-Robot Interaction</span>
+        <span class="tag">Artificial Intelligence</span>
+        <span class="tag">Design Research</span>
+      </div>
+
+      <!-- Unified Social Icons -->
+      <div class="social-links-unified" style="margin-bottom: 32px;">
+        {% for link in site.data.links %}
+        <a href="{{ link.url }}" target="_blank" aria-label="{{ link.title }}">
+          {% if link.icon %}<i class="{{ link.icon }}"></i>{% endif %}
+          {% if link.img %}<img src="assets/images/{{ link.img }}" width="18" height="18">{% endif %}
+        </a>
+        {% endfor %}
+      </div>
+
+      <div class="quote">
+        "{{ site.data.index.statement | strip_html }}"
+      </div>
+
+      <div class="affiliations">
+        <strong>Affiliations:</strong>
+        {% for affiliation in site.data.index.affiliations %}
+        <span>
+          {{ affiliation | markdownify | remove: '<p>' | remove: '</p>' }}
+        </span>
+        {% unless forloop.last %} <span style="margin: 0 4px">•</span> {% endunless %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 </div>
-	</div>
-</div>
 
-<div style="margin-top:16px;"><strong style="font-size:13px; margin-right:8px !important;">Statement.</strong>
-{{ site.data.index.statement | markdownify | replace: '<a ', '<a target="_blank" ' | remove: '<p>' | remove: '</p>' }}
-	</div>
+<!-- Latest News Section -->
+<div class="wrapper" id="news">
+  <div class="section-header">
+    <div class="title-group">
+      <h2>Latest News</h2>
+      <p>Updates from the lab and research community</p>
+    </div>
 
-	
-	<div class="row">
-		<div class="column left-column need-padding" id="students">
-			<div class="topic small-margin">Students</div>
-			{% for student in site.data.students.current %}
-			<div>
-				<span class='service-conf'>{{ student.name }}</span>
-				{% if student.in %}
-				<a href="{{ student.in }}" target="_blank">
-					<i class="fa-brands fa-linkedin"></i>
-				</a>
-				{% endif %}
-			</div>
-			{% endfor %}
-			<a href="https://robotdesign.studio/team" target="_blank">Full Team</a>
-			{% if site.data.students.alumni %}
-			<div class="topic small-margin" style="padding-top:4px;">Alumni</div>
-			{% for alum in site.data.students.alumni %}
-			<div>
-				<span class='service-conf'>{{ alum.name }}</span>
-				{% if alum.in %}
-				<a href="{{ alum.in }}" target="_blank">
-					<i class="fa-brands fa-linkedin"></i>
-				</a>
-				{% endif %}
-			</div>
-			{% endfor %}
-			{% endif %}
-		</div>
-		
-		<div class="column right-column need-padding" id="teaching">
-			<div class="topic small-margin">Teaching</div>
-			{% for course in site.data.teaching %}
-			  <div style="margin-bottom:3px;">
-				{{course.code}} &ndash; <a href=teaching#{{ course.id }}>{{ course.title}}</a>
-				{% if course.terms %}
-					({% for term in course.terms %}{{ term | markdownify | replace: '<a ', '<a target="_blank" ' | remove: '<p>' | remove: '</p>' | strip }}{% unless forloop.last %}, {% endunless %}{% endfor %})
-				{% endif %}
-			  </div>
-			{% endfor %}
-		  </div>
-	</div>
-	
-	<div class="row">
-		<div class="column left-column need-padding" id="press">
-			<div class="topic small-margin">Press</div>
-			{% assign press_items = site.data.press | slice: 0, 9 %}
-			{% for item in press_items %}
-			<div>
-				{{ item | markdownify | replace: '<a ', '<a target="_blank" ' | remove: '<p>' | remove: '</p>' }}
-			</div>
-			{% endfor %}
-			<div id="extra-press" style="display: none;">
-				{% assign extra_press_items = site.data.press | slice: 9, site.data.press.size %}
-				{% for item in extra_press_items %}
-				<div>
-					{{ item | markdownify | replace: '<a ', '<a target="_blank" ' | remove: '<p>' | remove: '</p>' }}
-				</div>
-				{% endfor %}
-			</div>
-			{% if site.data.press.size > 9 %}
-			<button id="more-press" class="show-more">Show More</button>
-			{% endif %}
-		</div>
-	
-<div class="column right-column need-padding" id="news">
-  <div class="topic small-margin">News</div>
+  </div>
 
-  {% assign news_index = 0 %}
-
-  {% for month in site.data.news %}
-    {% assign month_label = month[0] %}
-    {% assign items = month[1] %}
-
-    {% for item in items %}
-      {% if news_index < 9 %}
-        <div>
-          {% if item.first %}
-            {{ month_label }}: {{ item[0] | markdownify | replace: '<a ', '<a target="_blank" ' | remove: '<p>' | remove: '</p>' }}
-            {% if item[1] %}
-              - <a href="{{ item[1] }}" target="_blank" style="position: relative; top: 1px;">
-                <i class="fa-brands fa-youtube"></i>
-              </a>
-            {% endif %}
-          {% else %}
-            {{ month_label }}: {{ item | markdownify | replace: '<a ', '<a target="_blank" ' | remove: '<p>' | remove: '</p>' }}
-          {% endif %}
-        </div>
-      {% endif %}
-      {% assign news_index = news_index | plus: 1 %}
-    {% endfor %}
-  {% endfor %}
-
-  <div id="extra-news" style="display: none;">
-    {% assign news_index = 0 %}
+  <div class="news-bento">
+    <!-- Gather All News Items -->
+    {% assign news_flat = "" | split: "" %}
     {% for month in site.data.news %}
-      {% assign month_label = month[0] %}
-      {% assign items = month[1] %}
+    {% assign month_label = month[0] %}
+    {% for item in month[1] %}
+    {% capture full_item %}
+    {{ month_label }}|||{{ item | markdownify }}
+    {% endcapture %}
+    {% assign news_flat = news_flat | push: full_item %}
+    {% endfor %}
+    {% endfor %}
 
-      {% for item in items %}
-        {% if news_index >= 9 %}
-          <div>
-            {% if item.first %}
-              {{ month_label }}: {{ item[0] | markdownify | replace: '<a ', '<a target="_blank" ' | remove: '<p>' | remove: '</p>' }}
-              {% if item[1] %}
-                - <a href="{{ item[1] }}" target="_blank" style="position: relative; top: 1px;">
-                  <i class="fa-brands fa-youtube"></i>
-                </a>
-              {% endif %}
-            {% else %}
-              {{ month_label }}: {{ item | markdownify | replace: '<a ', '<a target="_blank" ' | remove: '<p>' | remove: '</p>' }}
-            {% endif %}
-          </div>
-        {% endif %}
-        {% assign news_index = news_index | plus: 1 %}
-      {% endfor %}
+    <!-- Item 1: Featured (Spans 2 cols) -->
+    {% assign featured_news = news_flat[0] | split: "|||" %}
+    <div class="card featured">
+      <div>
+        <span class="badge">New Publication / Update</span>
+        {% assign content = featured_news[1] | replace: '<p>', '' | replace: '</p>', '' %}
+        <h3>{{ content | strip_html | truncatewords: 8, "" }}</h3>
+        <p>{{ content }}</p>
+      </div>
+      <div class="meta"><i class="far fa-calendar"></i> {{ featured_news[0] }}</div>
+    </div>
+
+    <!-- Items 2-5: Visible Standard Cards -->
+    {% for i in (1..4) %}
+    {% if news_flat[i] %}
+    {% assign news_item = news_flat[i] | split: "|||" %}
+    <div class="card standard">
+      <div>
+        <span class="badge">Talk / Event</span>
+        {% assign content = news_item[1] | replace: '<p>', '' | replace: '</p>', '' %}
+        <h3>{{ content }}</h3>
+      </div>
+      <div class="meta">{{ news_item[0] }}</div>
+    </div>
+    {% endif %}
+    {% endfor %}
+
+    <!-- Items 6+: Hidden Standard Cards -->
+    {% for i in (5..999) %}
+    {% if news_flat[i] %}
+    {% assign news_item = news_flat[i] | split: "|||" %}
+    <div class="card standard hidden news-extra">
+      <div>
+        <span class="badge">Archive</span>
+        {% assign content = news_item[1] | replace: '<p>', '' | replace: '</p>', '' %}
+        <h3>{{ content }}</h3>
+      </div>
+      <div class="meta">{{ news_item[0] }}</div>
+    </div>
+    {% endif %}
     {% endfor %}
   </div>
 
-  {% assign total_news = 0 %}
-  {% for month in site.data.news %}
-    {% assign items = month[1] %}
-    {% assign total_news = total_news | plus: items.size %}
-  {% endfor %}
-
-  {% if total_news > 9 %}
-    <button id="more-news" class="show-more">Show More</button>
-  {% endif %}
-</div>
-
-	</div>
-
-{% assign all_service = "" | split: "" %}
-
-{% for year in site.data.service %}
-  {% assign year_label = year[0] %}
-  {% assign items = year[1] %}
-  {% for item in items %}
-    {% capture conf_entry %}
-      {{ year_label }}: {{ item.conf | markdownify | replace: '<a ', '<a target="_blank" ' | remove: '<p>' | remove: '</p>' }}|||{{ item.role }}|||{{ item.color }}
-    {% endcapture %}
-    {% assign all_service = all_service | push: conf_entry %}
-  {% endfor %}
-{% endfor %}
-
-{% assign all_service = all_service | reverse %}
-{% assign total = all_service.size %}
-
-{% assign half = total | divided_by: 2 %}
-{% assign left_column_full = all_service | slice: 0, half %}
-{% assign right_column_full = all_service | slice: half, total %}
-
-{%- comment -%}
-Calculate how many items to show initially on each side,
-so total shown is 9 or less.
-{%- endcomment -%}
-
-{% assign max_show = 9 %}
-{% assign left_show = half %}
-{% assign right_show = total | minus: half %}
-
-{% if left_show > max_show %}
-  {% assign left_show = max_show %}
-  {% assign right_show = 0 %}
-{% else %}
-  {% assign right_show = max_show | minus: left_show %}
-  {% if right_show > right_column_full.size %}
-    {% assign right_show = right_column_full.size %}
-  {% endif %}
-{% endif %}
-
-{% assign all_service = "" | split: "" %}
-
-{% for year in site.data.service %}
-  {% assign year_label = year[0] %}
-  {% assign items = year[1] %}
-  {% for item in items %}
-    {% capture conf_entry %}
-      {{ year_label }}: {{ item.conf | markdownify | replace: '<a ', '<a target="_blank" ' | remove: '<p>' | remove: '</p>' }}|||{{ item.role }}|||{{ item.color }}
-    {% endcapture %}
-    {% assign all_service = all_service | push: conf_entry %}
-  {% endfor %}
-{% endfor %}
-
-{% assign all_service = all_service | reverse %}
-{% assign total = all_service.size %}
-
-{% assign half = total | divided_by: 2 %}
-{% assign left_column_full = all_service | slice: 0, half %}
-{% assign right_column_full = all_service | slice: half, total %}
-
-{% assign max_show_per_column = 9 %}
-
-{% assign left_show = left_column_full.size %}
-{% if left_show > max_show_per_column %}
-  {% assign left_show = max_show_per_column %}
-{% endif %}
-
-{% assign right_show = right_column_full.size %}
-{% if right_show > max_show_per_column %}
-  {% assign right_show = max_show_per_column %}
-{% endif %}
-
-<div class="row">
-  <div class="column left-column need-padding">
-    <div class="topic small-margin">Service</div>
-
-    <div id="left-service-visible">
-      {% for entry in left_column_full %}
-        {% if forloop.index0 < left_show %}
-          {% assign parts = entry | split: '|||' %}
-          <div style="margin-bottom:3px;">
-            <span class='service-conf'>{{ parts[0] }}</span>
-            <span class='service-type {{ parts[2] }}'>{{ parts[1] }}</span>
-          </div>
-        {% endif %}
-      {% endfor %}
-    </div>
-
-    <div id="left-service-extra" style="display:none;">
-      {% for entry in left_column_full %}
-        {% if forloop.index0 >= left_show %}
-          {% assign parts = entry | split: '|||' %}
-          <div style="margin-bottom:3px;">
-            <span class='service-conf'>{{ parts[0] }}</span>
-            <span class='service-type {{ parts[2] }}'>{{ parts[1] }}</span>
-          </div>
-        {% endif %}
-      {% endfor %}
-    </div>
-
-    {% assign show_button = false %}
-    {% if left_column_full.size > max_show_per_column or right_column_full.size > max_show_per_column %}
-      {% assign show_button = true %}
-    {% endif %}
-
-    {% if show_button %}
-      <button id="more-service" class="show-more" onclick="toggleService()">Show More</button>
+  <!-- Show More Button -->
+  <div style="text-align: center; margin-top: 40px; margin-bottom: 60px;">
+    {% if news_flat.size > 5 %}
+    <button id="show-more-news-btn" class="btn-white"
+      style="border: 1px solid #E5E5E5; padding: 12px 32px; border-radius: 50px; cursor: pointer; background: white; font-weight: 600; color: #5B3BA8;">
+      Show More News
+    </button>
     {% endif %}
   </div>
 
-  <div class="column right-column need-padding">
-    <div class="topic small-margin" style="visibility: hidden;">&nbsp;</div>
+</div>
 
-    <div id="right-service-visible">
-      {% for entry in right_column_full %}
-        {% if forloop.index0 < right_show %}
-          {% assign parts = entry | split: '|||' %}
-          <div style="margin-bottom:3px;">
-            <span class='service-conf'>{{ parts[0] }}</span>
-            <span class='service-type {{ parts[2] }}'>{{ parts[1] }}</span>
-          </div>
-        {% endif %}
-      {% endfor %}
+<!-- Academic Pillars -->
+<div class="wrapper" id="academic">
+  <div class="section-header">
+    <div class="title-group">
+      <h2>Academic Pillars</h2>
+    </div>
+  </div>
+
+  <div class="pillars-grid">
+    <!-- Students -->
+    <div class="pillar-card">
+      <div class="icon-box"><i class="fas fa-users"></i></div>
+      <h3>Students</h3>
+      <ul class="content-list">
+        {% for student in site.data.students.current limit:5 %}
+        <li>
+          {{ student.name }}
+          {% if student.in %}
+          <a href="{{ student.in }}" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"
+              style="margin-left:5px;"></i></a>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      <a href="https://robotdesign.studio/team" target="_blank" class="view-link">View Full Team</a>
     </div>
 
-    <div id="right-service-extra" style="display:none;">
-      {% for entry in right_column_full %}
-        {% if forloop.index0 >= right_show %}
-          {% assign parts = entry | split: '|||' %}
-          <div style="margin-bottom:3px;">
-            <span class='service-conf'>{{ parts[0] }}</span>
-            <span class='service-type {{ parts[2] }}'>{{ parts[1] }}</span>
+    <!-- Teaching -->
+    <div class="pillar-card">
+      <div class="icon-box"><i class="fas fa-chalkboard-teacher"></i></div>
+      <h3>Teaching</h3>
+      <div class="content-list">
+        {% for course in site.data.teaching limit:3 %}
+        <div style="margin-bottom: 16px;">
+          <div style="font-size: 10px; color: #999; text-transform: uppercase;">
+            {{ course.terms | first | markdownify | remove: '<p>' | remove: '</p>' }}
           </div>
-        {% endif %}
-      {% endfor %}
+          <strong>{{ course.code }}</strong>
+          <div style="font-size: 14px; color: var(--primary-purple);">{{ course.title }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Service -->
+    <div class="pillar-card">
+      <div class="icon-box"><i class="fas fa-hand-holding-heart"></i></div>
+      <h3>Service</h3>
+      {% assign latest_service_year = site.data.service | first %}
+      <div
+        style="font-size: 11px; font-weight:bold; color: var(--text-gray); margin-bottom: 12px; text-transform:uppercase;">
+        {{ latest_service_year[0] }} Highlights</div>
+      <ul class="content-list">
+        {% for item in latest_service_year[1] limit:4 %}
+        <li>
+          {{ item.conf | markdownify | remove: '<p>' | remove: '</p>' }}
+          <span style="font-size: 12px; color: #999;">({{ item.role }})</span>
+        </li>
+        {% endfor %}
+      </ul>
+      <a href="{{ 'service.html' | relative_url }}" class="view-link">View Full Service Record</a>
+    </div>
+  </div>
+</div>
+
+<!-- Projects Section -->
+<div class="wrapper" id="projects">
+  <div class="section-header">
+    <div class="title-group">
+      <h2>Projects</h2>
+    </div>
+  </div>
+  <div class="projects-section">
+    <p>For details about the research projects in my lab, see <a target="_blank"
+        style="color:var(--primary-purple); font-weight:bold;" href="https://www.robotdesign.studio">Robot Studio</a>.
+    </p>
+
+  </div>
+</div>
+
+
+<!-- Press & Media -->
+<div class="wrapper">
+  <div class="press-banner">
+    <div class="content">
+      <h2>Press & Media</h2>
+      <div class="press-list">
+        {% assign press_items = site.data.press | slice: 0, 4 %}
+        {% for item in press_items %}
+        <div class="item">
+          <div class="year">2025</div>
+          <div class="text">{{ item | markdownify | remove: '<p>' | remove: '</p>' }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="action-area">
+      <a href="{{ 'press.html' | relative_url }}" class="btn-white">See All Press</a>
     </div>
   </div>
 </div>
 
 <script>
-function toggleService() {
-  const leftExtra = document.getElementById('left-service-extra');
-  const rightExtra = document.getElementById('right-service-extra');
-  const button = document.getElementById('more-service');
+  document.getElementById('show-more-news-btn').addEventListener('click', function () {
+    var hiddenItems = document.querySelectorAll('.news-extra');
+    var btn = document.getElementById('show-more-news-btn');
+    var isHidden = hiddenItems[0].classList.contains('hidden');
 
-  if (leftExtra.style.display === 'none') {
-    leftExtra.style.display = 'block';
-    rightExtra.style.display = 'block';
-    button.textContent = 'Show Less';
-  } else {
-    leftExtra.style.display = 'none';
-    rightExtra.style.display = 'none';
-    button.textContent = 'Show More';
-  }
-}
-</script>
-
-
-
-<script>
-function toggleService() {
-  const leftExtra = document.getElementById('left-service-extra');
-  const rightExtra = document.getElementById('right-service-extra');
-  const button = document.getElementById('more-service');
-
-  if (leftExtra.style.display === 'none') {
-    leftExtra.style.display = 'block';
-    rightExtra.style.display = 'block';
-    button.textContent = 'Show Less';
-  } else {
-    leftExtra.style.display = 'none';
-    rightExtra.style.display = 'none';
-    button.textContent = 'Show More';
-  }
-}
-</script>
-	
-<div class="clearfix press-and-news">
-	<div class="left-box press need-padding">
-		<div class="topic small-margin">Projects</div>
-		{{ site.data.index.projects | markdownify | replace: '<a ', '<a target="_blank" ' | remove: '<p>' | remove: '</p>' }}
-	</div>
-</div>
-
-
-<style>
-
-@media (max-width: 768px) {
-#picture{
-	width:100px;
-}
-}
-
-@media (min-width: 375px) and (max-width: 768px) {
-
-    .footer-col-wrapper {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start; 
-    }
-
-    .footer-col.body-col-2 {
-        flex-shrink: 0;
-        margin-right: 15px;
-        margin-bottom: 0; 
-    }
-
-    #self_img {
-        margin-top: 0; 
-    }
-
-    .footer-col.body-col-3 {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-}
-
-.topic.small-margin{
-	font-size:13px;
-}
-.topic.small-margin{
-	margin-bottom:0px;
-	padding-top:10px;
-}
-
-
-.row {
-	display: flex;
-	flex-wrap: wrap;
-}
-.column {
-	
-	box-sizing: border-box;
-}
-.left-column {
-	flex: 1.25;
-}
-.right-column {
-	flex: 1.75;
-}
-
-.topic {
-	font-weight: bold;
-	margin-bottom: 10px;
-}
-.show-more {
-	padding: 4px 8px;
-	cursor: pointer;
-	border: none;
-	background: #F5F5F5;
-	color: black;
-	border-radius: 4px;
-	font-size:12px;
-	margin-left:-2px;
-}
-.show-more:hover{
-	background:#f2e6fc;
-
-}
-</style>
-<script>
-    document.getElementById('more-press').addEventListener('click', function() {
-        var extraPress = document.getElementById('extra-press');
-        var moreButton = document.getElementById('more-press');
-        if (extraPress.style.display === 'none') {
-            extraPress.style.display = 'block';
-            moreButton.textContent = 'Show Less';
-        } else {
-            extraPress.style.display = 'none';
-            moreButton.textContent = 'Show More';
-        }
+    hiddenItems.forEach(function (item) {
+      if (isHidden) {
+        item.classList.remove('hidden');
+      } else {
+        item.classList.add('hidden');
+      }
     });
 
-    document.getElementById('more-news').addEventListener('click', function() {
-        var extraNews = document.getElementById('extra-news');
-        var moreButton = document.getElementById('more-news');
-        if (extraNews.style.display === 'none') {
-            extraNews.style.display = 'block';
-            moreButton.textContent = 'Show Less';
-        } else {
-            extraNews.style.display = 'none';
-            moreButton.textContent = 'Show More';
-        }
-    });
+    if (isHidden) {
+      btn.textContent = 'Show Less News';
+    } else {
+      btn.textContent = 'Show More News';
+    }
+  });
 </script>

@@ -1,0 +1,34 @@
+---
+layout: default
+---
+
+<div class="wrapper">
+    <div class="page-header" style="padding: 60px 0 40px 0;">
+        <h1 style="font-family: var(--font-serif); font-size: 48px; margin-bottom: 20px;">Service</h1>
+        <p style="max-width: 600px; color: var(--text-gray); font-size: 18px; line-height: 1.6;">
+            Contributions to the academic community through leadership, organization, and review.
+        </p>
+    </div>
+
+    <div class="service-full-list" style="margin-bottom: 100px;">
+        {% for year_group in site.data.service %}
+        <div class="service-year-group" style="margin-bottom: 40px;">
+            <h2
+                style="font-family: var(--font-serif); font-size: 32px; color: var(--primary-purple); border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 24px;">
+                {{ year_group[0] }}
+            </h2>
+            <div class="service-items" style="display: grid; gap: 16px;">
+                {% for item in year_group[1] %}
+                <div class="service-item" style="display: flex; align-items: baseline; gap: 12px; font-size: 16px;">
+                    <span style="color: var(--primary-purple); font-weight: bold;">•</span>
+                    <div>
+                        <strong>{{ item.conf | markdownify | remove: '<p>' | remove: '</p>' }}</strong>
+                        <span style="color: var(--text-gray);"> — {{ item.role }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

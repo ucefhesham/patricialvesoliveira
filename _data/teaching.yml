@@ -1,6 +1,7 @@
 - id: "HRI"
   code: ROB 340
   title: Human Evaluation of Robot Systems
+  tag: "CORE UNDERGRADUATE"
   image: "/teaching/rob340.jpg"
   description: >
     This core undergraduate course covers the fundamentals of how robots can be evaluated 
@@ -15,6 +16,7 @@
 - id: "design-for-HRI"
   code: ROB 498/599
   title: Design For Human-Robot Interaction
+  tag: "ADVANCED GRADUATE"
   image: "/teaching/design-for-human-robot-interaction.png"
   description: >
     This advanced course covers fundamentals of Design for Human-Robot Interaction. 

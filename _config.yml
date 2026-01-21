@@ -7,4 +7,6 @@ url: "https://patricialvesoliveira.com"
 title_image: patricia.jpg
 google_scholar_link: "https://scholar.google.com/citations?hl=en&user=TbN31LMAAAAJ&view_op=list_works&alert_preview_top_rm=2&sortby=pubdate"
 theme: null
+plugins:
+  - jekyll-sass-converter
 

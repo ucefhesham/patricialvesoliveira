@@ -6,82 +6,88 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{% if page.title %}{{ page.title | escape }} | P. Alves-Oliveira {% else %}{{ site.title | escape }}{% endif %}</title>
+  <title>{% if page.title %}{{ page.title | escape }} | P. Alves-Oliveira {% else %}{{ site.title | escape }}{% endif %}
+  </title>
 
-  <meta name="description" content="{{ page.summary | default: page.excerpt | default: site.descriptionshort | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+  <meta name="description"
+    content="{{ page.summary | default: page.excerpt | default: site.descriptionshort | strip_html | normalize_whitespace | truncate: 160 | escape }}">
 
-  <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
-  <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+  <link rel="stylesheet" href="{{ " /assets/css/main.css" | relative_url }}">
+  <link rel="stylesheet" href="{{ " /assets/css/style.css" | relative_url }}">
+  <link rel="stylesheet" href="{{ " /assets/css/pao_design.css" | relative_url }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ " /feed.xml" |
+    relative_url }}">
 
   <link rel="shortcut icon" type="image/x-icon" href="{{ site.baseurl }}/favicon.ico">
-  
+
   {% if jekyll.environment == 'production' and site.google_analytics %}
   {% include google-analytics.html %}
   {% endif %}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
   <!-- Twitter, Facebook cards -->
 
-  <meta property="fb:app_id"  content="260085577961480">
-  <meta property="og:url"  content="{{ site.url }}{{ page.url }}">
+  <meta property="fb:app_id" content="260085577961480">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
 
-  <meta name="twitter:site"    content="@{{ site.twitter_username }}">
+  <meta name="twitter:site" content="@{{ site.twitter_username }}">
   <meta name="twitter:creator" content="@{{ site.twitter_username }}">
-  <meta name="twitter:title"   content="{{ page.title }}">
-  <meta property="og:title"    content="{{ page.title }}">
+  <meta name="twitter:title" content="{{ page.title }}">
+  <meta property="og:title" content="{{ page.title }}">
   {% if page.summary %}
   <meta name="twitter:description" content="{{ page.summary }}">
-  <meta property="og:description"  content="{{ page.summary }}">
+  <meta property="og:description" content="{{ page.summary }}">
   {% elsif page.excerpt %}
   <meta name="twitter:description" content="{{ page.excerpt }}">
-  <meta property="og:description"  content="{{ page.excerpt }}">
+  <meta property="og:description" content="{{ page.excerpt }}">
   {% else %}
   <meta name="twitter:description" content="{{ site.descriptionshort }}">
-  <meta property="og:description"  content="{{ site.descriptionshort }}">
+  <meta property="og:description" content="{{ site.descriptionshort }}">
   {% endif %}
 
   {% if page.video %}
-  <meta name="twitter:card"  content="player">
-  <meta property="og:type"  content="movie">
+  <meta name="twitter:card" content="player">
+  <meta property="og:type" content="movie">
   {% elsif page.image %}
-  <meta name="twitter:card"  content="summary_large_image">
-  <meta property="og:type"  content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:type" content="article">
   {% else %}
-  <meta name="twitter:card"  content="summary">
-  <meta property="og:type"  content="article">
+  <meta name="twitter:card" content="summary">
+  <meta property="og:type" content="article">
   {% endif %}
 
   {% if page.video %}
-  <meta name="twitter:player"     content="{{ site.url }}{{ page.video }}">
+  <meta name="twitter:player" content="{{ site.url }}{{ page.video }}">
   <meta name="twitter:player:width" content="1920">
   <meta name="twitter:player:height" content="1080">
   <meta name="twitter:player:stream" content="{{ site.url }}{{ page.video }}">
 
-  <meta property="og:video:url"  content="{{ site.url }}{{ page.video }}">
-  <meta property="og:video:secure_url"  content="{{ site.url }}{{ page.video }}">
-  <meta property="og:video:type"  content="video/mp4">
-  <meta property="og:video:width"  content="1920">
-  <meta property="og:video:height"  content="1080">
+  <meta property="og:video:url" content="{{ site.url }}{{ page.video }}">
+  <meta property="og:video:secure_url" content="{{ site.url }}{{ page.video }}">
+  <meta property="og:video:type" content="video/mp4">
+  <meta property="og:video:width" content="1920">
+  <meta property="og:video:height" content="1080">
 
 
-  <meta property="og:video:url"  content="{{ site.url }}{{ page.video }}">
-  <meta property="og:video:secure_url"  content="{{ site.url }}{{ page.video }}">
-  <meta property="og:video:type"  content="text/html">
-  <meta property="og:video:width"  content="1920">
-  <meta property="og:video:height"  content="1080">
+  <meta property="og:video:url" content="{{ site.url }}{{ page.video }}">
+  <meta property="og:video:secure_url" content="{{ site.url }}{{ page.video }}">
+  <meta property="og:video:type" content="text/html">
+  <meta property="og:video:width" content="1920">
+  <meta property="og:video:height" content="1080">
   {% endif %}
 
-    {% if page.image %}
+  {% if page.image %}
   <meta name="twitter:image" content="{{ site.url }}{{ page.image }}">
-  <meta property="og:image"  content="{{ site.url }}{{ page.image }}">
-   {% else %}
+  <meta property="og:image" content="{{ site.url }}{{ page.image }}">
+  {% else %}
   <meta name="twitter:image" content="{{ site.url }}{{ site.title_image }}">
-  <meta property="og:image"  content="{{ site.url }}{{ site.title_image }}">
+  <meta property="og:image" content="{{ site.url }}{{ site.title_image }}">
   {% endif %}
- 
+
   <!-- end of Twitter, Facebook cards -->
 
 

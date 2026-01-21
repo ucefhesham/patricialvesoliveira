@@ -12,9 +12,9 @@
   <meta name="description"
     content="{{ page.summary | default: page.excerpt | default: site.descriptionshort | strip_html | normalize_whitespace | truncate: 160 | escape }}">
 
-  <link rel="stylesheet" href="{{ " /assets/css/main.css" | relative_url }}">
-  <link rel="stylesheet" href="{{ " /assets/css/style.css" | relative_url }}">
-  <link rel="stylesheet" href="{{ " /assets/css/pao_design.css" | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/pao_design.css' | relative_url }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ " /feed.xml" |
     relative_url }}">

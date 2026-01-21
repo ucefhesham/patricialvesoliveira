@@ -49,7 +49,6 @@ a {
     max-width: 100%;
     margin: 0 auto;
     padding: 0 40px;
-    /* Increased side padding for full width */
 }
 
 /* 3. HEADER */
@@ -106,7 +105,6 @@ a {
 
 .site-nav .page-link.btn-cv:hover {
     background: #503396;
-    /* Darker purple */
     transform: translateY(-1px);
 }
 
@@ -123,9 +121,7 @@ a {
     position: relative;
     width: 100%;
     height: auto;
-    /* Allow auto height */
     aspect-ratio: 1 / 1;
-    /* Square-ish aspect ratio for portrait */
     max-width: 500px;
 }
 
@@ -134,9 +130,7 @@ a {
     height: 100%;
     object-fit: cover;
     border-radius: 40px;
-    /* More rounded */
     box-shadow: none;
-    /* Removed offset solid shadow */
     position: relative;
     z-index: 2;
     background-color: transparent;
@@ -152,7 +146,6 @@ a {
     background: var(--primary-purple);
     filter: blur(50px);
     opacity: 0.3;
-    /* Softer glow */
     z-index: 1;
     border-radius: 40px;
     transform: scale(0.95);
@@ -236,7 +229,6 @@ a {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     display: flex;
-    /* Flex for inline alignment */
     align-items: center;
     flex-wrap: wrap;
     gap: 8px;
@@ -320,7 +312,6 @@ a {
 .news-bento {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* 3 Equal Columns */
     grid-template-rows: auto;
     gap: 24px;
     margin-bottom: 60px;
@@ -518,7 +509,6 @@ a {
         radial-gradient(circle at 70% 35%, rgba(255, 255, 255, 0.1) 25px, transparent 26px),
         radial-gradient(circle at 50% 70%, rgba(255, 255, 255, 0.1) 40px, transparent 41px);
     background-color: #6445b0;
-    /* lightly brightened */
     border-radius: 40px;
     opacity: 0.5;
     z-index: 1;
@@ -575,6 +565,8 @@ a {
     font-weight: 600;
     border: none;
     cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
 }
 
 .press-banner .action-area .btn-white:hover {
@@ -595,46 +587,6 @@ a {
     display: none !important;
 }
 
-/* Mobile Responsive */
-@media (max-width: 900px) {
-    .hero-section {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .hero-section .hero-image {
-        height: 400px;
-        margin-bottom: 20px;
-    }
-
-    .hero-section .hero-content .tags,
-    .hero-section .hero-content .social-links,
-    .hero-section .hero-content .affiliations {
-        justify-content: center;
-    }
-
-    .hero-section .hero-content h1 {
-        font-size: 42px;
-    }
-
-    .news-bento,
-    .pillars-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .press-banner {
-        flex-direction: column;
-        gap: 30px;
-    }
-
-    .press-banner::before {
-        display: none;
-    }
-
-    .press-banner .content {
-        max-width: 100%;
-    }
-}
 /* 10. TEACHING PAGE */
 .teaching-list {
     display: flex;
@@ -649,7 +601,7 @@ a {
     border-radius: 24px;
     box-shadow: var(--card-shadow);
     overflow: hidden;
-    min-height: 500px;
+    min-height: 400px;
 }
 
 .teaching-card.reverse {
@@ -658,6 +610,7 @@ a {
 
 .teaching-card .card-image {
     flex: 1;
+    min-width: 0;
     position: relative;
     overflow: hidden;
 }
@@ -670,7 +623,8 @@ a {
 
 .teaching-card .card-content {
     flex: 1;
-    padding: 60px;
+    min-width: 0;
+    padding: 48px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -700,14 +654,14 @@ a {
 
 .teaching-card h3 {
     font-family: var(--font-serif);
-    font-size: 32px;
+    font-size: 28px;
     margin: 0 0 24px 0;
     line-height: 1.2;
     color: var(--text-dark);
 }
 
 .teaching-card .description {
-    font-size: 16px;
+    font-size: 15px;
     color: var(--text-gray);
     line-height: 1.6;
     margin-bottom: 32px;
@@ -726,27 +680,6 @@ a {
     gap: 12px;
 }
 
-@media (max-width: 900px) {
-    .teaching-card, .teaching-card.reverse {
-        flex-direction: column;
-    }
-    
-    .teaching-card .card-image {
-        height: 300px;
-    }
-    
-    .teaching-card .card-content {
-        padding: 32px;
-    }
-}
-
-/* Override for button link conversion */
-.press-banner .action-area .btn-white {
-    display: inline-block;
-    text-decoration: none;
-}
-
-
 /* 11. ANIMATIONS */
 .fade-up {
     opacity: 0;
@@ -759,8 +692,222 @@ a {
     transform: translateY(0);
 }
 
-/* Staggered delays for child elements if needed */
-.delay-100 { transition-delay: 0.1s; }
-.delay-200 { transition-delay: 0.2s; }
-.delay-300 { transition-delay: 0.3s; }
+.delay-100 {
+    transition-delay: 0.1s;
+}
 
+.delay-200 {
+    transition-delay: 0.2s;
+}
+
+.delay-300 {
+    transition-delay: 0.3s;
+}
+
+/* ==========================================
+   12. MOBILE RESPONSIVE - TABLET (1024px)
+   ========================================== */
+@media (max-width: 1024px) {
+    .hero-section {
+        grid-template-columns: 350px 1fr;
+        gap: 40px;
+    }
+
+    .hero-section .hero-content h1 {
+        font-size: 48px;
+    }
+
+    .pillars-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .news-bento {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ==========================================
+   13. MOBILE RESPONSIVE - PHONE (768px)
+   ========================================== */
+@media (max-width: 768px) {
+
+    /* Container */
+    .wrapper {
+        padding: 0 16px !important;
+    }
+
+    /* Hero Section */
+    .hero-section {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+        padding: 40px 0;
+        gap: 32px;
+    }
+
+    .hero-section .hero-image {
+        height: auto;
+        max-width: 280px;
+        margin: 0 auto;
+        aspect-ratio: 1;
+    }
+
+    .hero-section .hero-image::after {
+        display: none;
+    }
+
+    .hero-section .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-section .hero-content .tags {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero-section .hero-content .social-links,
+    .hero-section .hero-content .affiliations,
+    .social-links-unified {
+        justify-content: center;
+    }
+
+    /* NEWS BENTO - CRITICAL FIX */
+    .news-bento {
+        grid-template-columns: 1fr !important;
+        gap: 16px;
+    }
+
+    .news-bento .card.featured {
+        grid-column: span 1 !important;
+        min-height: auto;
+    }
+
+    .news-bento .card.featured h3 {
+        font-size: 20px;
+    }
+
+    /* Pillars Grid */
+    .pillars-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px;
+    }
+
+    .pillars-grid .pillar-card {
+        padding: 24px;
+    }
+
+    /* Press Banner */
+    .press-banner {
+        flex-direction: column;
+        gap: 24px;
+        padding: 32px 24px;
+    }
+
+    .press-banner::before {
+        display: none;
+    }
+
+    .press-banner .content {
+        max-width: 100%;
+    }
+
+    .press-banner .content h2 {
+        font-size: 28px;
+    }
+
+    .press-banner .action-area {
+        width: 100%;
+        text-align: center;
+    }
+
+    .press-banner .action-area .btn-white {
+        width: 100%;
+        display: block;
+    }
+
+    /* Section Headers */
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .section-header .title-group h2 {
+        font-size: 26px;
+    }
+
+    /* Projects */
+    .projects-section {
+        padding: 24px;
+    }
+
+    /* Teaching Cards */
+    .teaching-list {
+        gap: 40px;
+        margin-bottom: 60px;
+    }
+
+    .teaching-card,
+    .teaching-card.reverse {
+        flex-direction: column !important;
+        min-height: auto;
+    }
+
+    .teaching-card .card-image {
+        height: 220px;
+        flex: none;
+    }
+
+    .teaching-card .card-content {
+        padding: 24px;
+    }
+
+    .teaching-card h3 {
+        font-size: 22px;
+    }
+
+    .teaching-card .description {
+        font-size: 14px;
+    }
+}
+
+/* ==========================================
+   14. MOBILE RESPONSIVE - SMALL PHONE (480px)
+   ========================================== */
+@media (max-width: 480px) {
+    .hero-section .hero-image {
+        max-width: 240px;
+    }
+
+    .hero-section .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .site-title {
+        font-size: 20px;
+    }
+
+    .news-bento .card.featured h3,
+    .news-bento .card.standard h3 {
+        font-size: 16px;
+    }
+
+    .pillars-grid .pillar-card {
+        padding: 20px;
+    }
+
+    .pillars-grid .pillar-card h3 {
+        font-size: 18px;
+    }
+
+    .press-banner .content h2 {
+        font-size: 24px;
+    }
+
+    .teaching-card .card-image {
+        height: 180px;
+    }
+
+    .teaching-card h3 {
+        font-size: 20px;
+    }
+}

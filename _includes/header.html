@@ -1,6 +1,9 @@
 <header class="site-header" role="banner">
   <div class="wrapper header-inner">
     <a class="site-title" href="{{ '/' | relative_url }}">PAO.</a>
+    <button class="menu-toggle" aria-label="Toggle navigation">
+      <span class="hamburger"></span>
+    </button>
     <nav class="site-nav">
       <a class="page-link" href="#news">News</a>
       <a class="page-link" href="{{ 'teaching.html' | relative_url }}">Teaching</a>
@@ -9,5 +12,40 @@
       <a class="page-link" href="#projects">Projects</a>
       <a class="page-link btn-cv" href="{{ 'cv.html' | relative_url }}">CV</a>
     </nav>
+    <div class="nav-overlay"></div>
   </div>
 </header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const siteNav = document.querySelector('.site-nav');
+    const navOverlay = document.querySelector('.nav-overlay');
+
+    if (menuToggle && siteNav && navOverlay) {
+      menuToggle.addEventListener('click', function () {
+        menuToggle.classList.toggle('active');
+        siteNav.classList.toggle('active');
+        navOverlay.classList.toggle('active');
+        document.body.style.overflow = siteNav.classList.contains('active') ? 'hidden' : '';
+      });
+
+      navOverlay.addEventListener('click', function () {
+        menuToggle.classList.remove('active');
+        siteNav.classList.remove('active');
+        navOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+
+      // Close menu when a link is clicked
+      siteNav.querySelectorAll('.page-link').forEach(function (link) {
+        link.addEventListener('click', function () {
+          menuToggle.classList.remove('active');
+          siteNav.classList.remove('active');
+          navOverlay.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+  });
+</script>
